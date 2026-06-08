@@ -1,0 +1,266 @@
+@import "tailwindcss";
+
+/* =========================================================================
+   CSRD Tools - brand design tokens (DESIGN.md "navigator" theme).
+   Sister site to EUDR Navigator: same navigator design system, primary hue
+   shifted forest-green -> petrol-teal (data / disclosure / trust), keeping
+   ink-navy depth, sand neutrals and the amber signal.
+   Tailwind v4: tokens declared in @theme generate utilities
+   (bg-paper, text-ink, border-line, etc.). Legacy --color-* vars the
+   starter's .prose-body relies on are remapped to brand values below so
+   the blog body still renders.
+   ========================================================================= */
+
+@theme {
+  /* Brand colors - role-locked (petrol-teal grounding, ink depth, amber signal) */
+  --color-primary:        #0E4D54;  /* petrol-teal - grounding / primary */
+  --color-primary-dark:   #0A3B41;  /* petrol-teal hover */
+  --color-ink:            #0F2A3F;  /* ink-navy - text / depth (the off-black) */
+  --color-ink-dark:       #0A1F2E;  /* deepest ink - footer */
+  --color-accent:         #E0A100;  /* amber - fills, markers, focus (NEVER text on light) */
+  --color-accent-deep:    #8F6200;  /* amber-deep - AA-safe amber TEXT/LINK on light */
+
+  --color-sand:           #E8DFCF;  /* full sand - feature insets, badges */
+  --color-sand-tint:      #F2EEE4;  /* sand-tint surface / zebra / inset blocks */
+  --color-paper:          #FAF9F6;  /* page background - warm white */
+  --color-card:           #FCFBF8;  /* card bg - a hair lighter than paper for lift */
+
+  --color-line:           #D8CCB4;  /* hairline borders (sand-derived) */
+  --color-line-strong:    #C2B89E;  /* table dividers / sticky header underline */
+
+  --color-danger:         #B3411A;  /* high-risk / error (terracotta) */
+  --color-warn:           #FBF1D6;  /* amber/warn callout background */
+  --color-warn-strong:    #E0A100;  /* warn accent edge */
+  --color-low:            #D5E6E5;  /* low / "settled" petrol-teal tint */
+
+  --color-muted:          #4A5A66;  /* secondary text (6.8:1 on paper) */
+  --color-invert:         #FAF9F6;  /* text on dark/teal bands */
+
+  /* Fonts (next/font sets the underlying --font-display/body/mono vars) */
+  --font-display: var(--font-display), Georgia, "Times New Roman", serif;
+  --font-body:    var(--font-body), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono:    var(--font-mono), ui-monospace, SFMono-Regular, monospace;
+
+  /* Radius */
+  --radius-card:  0.625rem;
+  --radius-chip:  999px;
+}
+
+/* ---- Legacy token aliases (starter .prose-body + GateForm depend on these) ---- */
+:root {
+  --color-bg:       #FAF9F6;  /* paper */
+  --color-fg:       #0F2A3F;  /* ink */
+  --color-muted:    #4A5A66;
+  --color-accent:   #8F6200;  /* amber-deep so prose-body links pass AA on light */
+  --color-border:   #D8CCB4;
+  --color-surface:  #FCFBF8;
+
+  --radius-pill:    999px;
+  --shadow-soft:    0 4px 12px rgba(15, 42, 63, 0.05), 0 1px 2px rgba(15, 42, 63, 0.06);
+  --shadow-elevated:0 12px 32px -8px rgba(15, 42, 63, 0.14), 0 4px 8px rgba(15, 42, 63, 0.05);
+
+  /* Brand shadows */
+  --shadow-card-hover: 0 12px 32px -10px rgba(15, 42, 63, 0.18);
+  --shadow-cta-hover:  0 8px 22px -6px rgba(224, 161, 0, 0.30);
+
+  /* Motion tokens (DESIGN.md / motion.md) */
+  --ease-out:      cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out:   cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer:   cubic-bezier(0.32, 0.72, 0, 1);
+  --duration-fast:    140ms;
+  --duration-base:    220ms;
+  --duration-slow:    320ms;
+  --duration-content: 480ms;
+  --duration-glacial: 30s;
+}
+
+html, body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Animated link underline (ghost buttons / inline links) */
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1.5px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size var(--duration-base) var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .link-underline:hover { background-size: 100% 1.5px; }
+}
+
+/* =========================================================================
+   RevealOnScroll - IO fade-up. Honors prefers-reduced-motion.
+   ========================================================================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity var(--duration-content) var(--ease-out),
+    transform var(--duration-content) var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+.reveal[data-direction="left"]  { transform: translateX(-28px); }
+.reveal[data-direction="right"] { transform: translateX(28px); }
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* =========================================================================
+   Hero contour glacial drift (decorative; off under reduced-motion).
+   ========================================================================= */
+@keyframes contour-drift {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-4px); }
+}
+.contour-drift {
+  animation: contour-drift var(--duration-glacial) var(--ease-in-out) infinite alternate;
+}
+
+/* =========================================================================
+   .prose-static - long-form typography for STATIC pages (pillar/tool/legal/
+   about). Distinct from .prose-body (blog). DESIGN scale + brand colors.
+   ========================================================================= */
+.prose-static {
+  max-width: 68ch;
+  line-height: 1.65;
+  color: var(--color-ink);
+  font-size: 1.0625rem;
+}
+.prose-static > * + * { margin-top: 1.1em; }
+.prose-static h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.75rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+  color: var(--color-ink);
+  scroll-margin-top: 6rem;
+}
+.prose-static h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.3125rem;
+  line-height: 1.25;
+  margin-top: 1.6em;
+  margin-bottom: 0.4em;
+  color: var(--color-primary);
+  scroll-margin-top: 6rem;
+}
+.prose-static p { margin: 0; }
+.prose-static a {
+  color: var(--color-accent-deep);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 2px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .prose-static a:hover { text-decoration-style: solid; }
+}
+.prose-static strong { font-weight: 600; color: var(--color-ink); }
+.prose-static ul, .prose-static ol { padding-left: 1.4em; margin: 0; }
+.prose-static ul { list-style: disc; }
+.prose-static ol { list-style: decimal; }
+.prose-static li { margin: 0.35em 0; }
+.prose-static li::marker { color: var(--color-primary); }
+.prose-static blockquote {
+  border-left: 3px solid var(--color-primary);
+  padding-left: 1em;
+  color: var(--color-muted);
+  font-style: normal;
+}
+.prose-static code {
+  background: var(--color-sand-tint);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  color: var(--color-ink);
+}
+.prose-static hr {
+  border: 0;
+  border-top: 1px solid var(--color-line);
+  margin: 2em 0;
+}
+.prose-static table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95em;
+}
+.prose-static th, .prose-static td {
+  border: 1px solid var(--color-line);
+  padding: 0.5em 0.75em;
+  text-align: left;
+}
+.prose-static th { background: var(--color-sand); font-weight: 600; }
+
+/* =========================================================================
+   Long-form post body rhythm. Used by the blog detail page wrapping
+   <PostBody>. STRUCTURE PRESERVED - only color values reference brand tokens.
+   ========================================================================= */
+.prose-body {
+  max-width: 70ch;
+  line-height: 1.7;
+}
+.prose-body h1, .prose-body h2, .prose-body h3 {
+  font-weight: 600;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+.prose-body h1 { font-size: 2rem; }
+.prose-body h2 { font-size: 1.5rem; }
+.prose-body h3 { font-size: 1.25rem; }
+.prose-body p  { margin: 0 0 1em; }
+.prose-body a  { color: var(--color-accent); text-decoration: underline; }
+.prose-body code {
+  background: #F2EEE4;
+  padding: 0.1em 0.3em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+.prose-body pre {
+  background: #0F2A3F;
+  color: #FAF9F6;
+  padding: 1em;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+.prose-body pre code { background: transparent; padding: 0; }
+.prose-body img { border-radius: 8px; margin: 1.5em 0; }
+.prose-body blockquote {
+  border-left: 3px solid var(--color-border);
+  padding-left: 1em;
+  color: var(--color-muted);
+  margin: 1em 0;
+}
+.prose-body ul, .prose-body ol { padding-left: 1.5em; margin: 0 0 1em; }
+.prose-body li { margin: 0.25em 0; }
+
+/* =========================================================================
+   prefers-reduced-motion - kill transforms + drift, keep opacity.
+   ========================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .contour-drift { animation: none !important; }
+}

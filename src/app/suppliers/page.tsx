@@ -11,13 +11,15 @@ import {
   JsonLd,
   RevealOnScroll,
   ContourBackground,
-  Icon
+  Icon,
+  Byline
 } from '@/components/ui';
 import { SupplierForm } from './SupplierForm';
+import { EDITOR_ORG, LAST_REVIEWED_ISO, FIRST_PUBLISHED_ISO } from '@/lib/seo';
 
 const SITE = 'https://csrd-tools.com';
-const PUBLISHED = '2026-06-08';
-const MODIFIED = '2026-06-08';
+const PUBLISHED = FIRST_PUBLISHED_ISO;
+const MODIFIED = LAST_REVIEWED_ISO;
 
 // Canonical official sources (from research/01-regulation.md sec 10).
 const SRC = {
@@ -179,7 +181,8 @@ export default function SuppliersPage() {
               'Whether you have to respond to a sustainability data request, the value-chain cap, the VSME standard, and copy-paste response templates.',
             datePublished: PUBLISHED,
             dateModified: MODIFIED,
-            author: { '@type': 'Organization', name: 'CSRD Tools' },
+            author: EDITOR_ORG,
+            reviewedBy: EDITOR_ORG,
             publisher: { '@type': 'Organization', name: 'CSRD Tools' }
           },
           {
@@ -224,6 +227,9 @@ export default function SuppliersPage() {
             This page explains whether you have to respond, what you can decline, and gives you three
             ready-to-send replies.
           </p>
+          <div className="mt-6">
+            <Byline />
+          </div>
         </Container>
       </section>
 

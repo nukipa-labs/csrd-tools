@@ -13,13 +13,15 @@ import {
   ContourBackground,
   NewsletterSignup,
   Prose,
-  Icon
+  Icon,
+  Byline
 } from '@/components/ui';
 import { ESRS_STANDARDS, type EsrsStandard } from '@/lib/esrs';
+import { LAST_REVIEWED_ISO, FIRST_PUBLISHED_ISO } from '@/lib/seo';
 
 const SITE = 'https://csrd-tools.com';
-const PUBLISHED = '2025-09-01';
-const MODIFIED = '2026-06-08';
+const PUBLISHED = FIRST_PUBLISHED_ISO;
+const MODIFIED = LAST_REVIEWED_ISO;
 
 const SRC = {
   esrsDelegated: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023R2772',
@@ -91,7 +93,7 @@ export const metadata: Metadata = {
     description:
       'The 12 ESRS mapped by pillar, plus what they are, EFRAG, ESRS 1 vs 2 and the 2026 datapoint cuts. Sourced and kept current.',
     url: `${SITE}/esrs`,
-    images: [{ url: '/brand/og.svg', width: 1200, height: 630, alt: 'CSRD Tools' }]
+    images: [{ url: '/brand/og.png', width: 1200, height: 630, alt: 'CSRD Tools' }]
   }
 };
 
@@ -100,6 +102,7 @@ export default function EsrsHubPage() {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: 'The 12 ESRS standards',
+    dateModified: MODIFIED,
     itemListElement: ESRS_STANDARDS.map((s, i) => ({
       '@type': 'ListItem',
       position: i + 1,
@@ -179,6 +182,10 @@ export default function EsrsHubPage() {
             <Button href="/double-materiality" variant="secondary">
               How materiality scopes the ESRS
             </Button>
+          </div>
+
+          <div className="mt-8">
+            <Byline />
           </div>
         </Container>
       </header>

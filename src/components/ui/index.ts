@@ -2,6 +2,7 @@ export { Container } from './Container';
 export { Section } from './Section';
 export { Button } from './Button';
 export { LastUpdated } from './LastUpdated';
+export { Byline } from './Byline';
 export { TLDR } from './TLDR';
 export { Callout } from './Callout';
 export { SourceCite, Sources } from './SourceCite';

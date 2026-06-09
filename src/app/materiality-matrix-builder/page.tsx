@@ -10,9 +10,11 @@ import {
   ContourBackground,
   RevealOnScroll,
   Prose,
-  Icon
+  Icon,
+  Byline
 } from '@/components/ui';
 import { MatrixBuilder } from './MatrixBuilder';
+import { EDITOR_ORG, LAST_REVIEWED_ISO, FIRST_PUBLISHED_ISO } from '@/lib/seo';
 
 const CANONICAL = 'https://csrd-tools.com/materiality-matrix-builder';
 
@@ -65,6 +67,9 @@ export default function MaterialityMatrixPage() {
             url: CANONICAL,
             applicationCategory: 'BusinessApplication',
             operatingSystem: 'Any (web)',
+            author: EDITOR_ORG,
+            datePublished: FIRST_PUBLISHED_ISO,
+            dateModified: LAST_REVIEWED_ISO,
             offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
             description:
               'A free interactive tool that lets a company score sustainability topics on impact and financial materiality and plot them on a CSRD double materiality matrix.'
@@ -149,6 +154,9 @@ export default function MaterialityMatrixPage() {
             topical list, score each topic on impact and financial materiality, and see your
             priorities laid out: a working aid for your double materiality assessment.
           </p>
+          <div className="mt-6">
+            <Byline />
+          </div>
         </Container>
       </section>
 

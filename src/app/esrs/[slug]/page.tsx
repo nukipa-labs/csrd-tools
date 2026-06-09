@@ -14,13 +14,15 @@ import {
   ContourBackground,
   NewsletterSignup,
   Prose,
-  Icon
+  Icon,
+  Byline
 } from '@/components/ui';
 import { ESRS_STANDARDS, getStandard } from '@/lib/esrs';
+import { EDITOR_ORG, LAST_REVIEWED_ISO, FIRST_PUBLISHED_ISO } from '@/lib/seo';
 
 const SITE = 'https://csrd-tools.com';
-const PUBLISHED = '2025-09-01';
-const MODIFIED = '2026-06-08';
+const PUBLISHED = FIRST_PUBLISHED_ISO;
+const MODIFIED = LAST_REVIEWED_ISO;
 
 const SRC = {
   esrsDelegated: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023R2772',
@@ -54,7 +56,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url,
       publishedTime: PUBLISHED,
       modifiedTime: MODIFIED,
-      images: [{ url: '/brand/og.svg', width: 1200, height: 630, alt: 'CSRD Tools' }]
+      images: [{ url: '/brand/og.png', width: 1200, height: 630, alt: 'CSRD Tools' }]
     }
   };
 }
@@ -75,7 +77,8 @@ export default async function EsrsStandardPage({ params }: Props) {
     datePublished: PUBLISHED,
     dateModified: MODIFIED,
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
-    author: { '@type': 'Organization', name: 'CSRD Tools', url: SITE },
+    author: EDITOR_ORG,
+    reviewedBy: EDITOR_ORG,
     publisher: { '@type': 'Organization', name: 'CSRD Tools', url: SITE },
     about: {
       '@type': 'Legislation',
@@ -140,6 +143,10 @@ export default async function EsrsStandardPage({ params }: Props) {
             <Button href="/double-materiality" variant="ghost">
               How materiality decides if this applies
             </Button>
+          </div>
+
+          <div className="mt-8">
+            <Byline />
           </div>
         </Container>
       </header>

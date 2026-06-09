@@ -10,8 +10,10 @@ import {
   Sources,
   JsonLd,
   NewsletterSignup,
-  Icon
+  Icon,
+  Byline
 } from '@/components/ui';
+import { EDITOR_ORG, LAST_REVIEWED_ISO, FIRST_PUBLISHED_ISO } from '@/lib/seo';
 
 const SITE = 'https://csrd-tools.com';
 const PAGE_URL = `${SITE}/omnibus`;
@@ -340,8 +342,9 @@ export default function OmnibusPage() {
       'A live, plain-English explainer of the CSRD Omnibus: the three Omnibus things, what the final Directive (EU) 2026/470 changed, and what is still in flux.',
     url: PAGE_URL,
     datePublished: '2026-02-26',
-    dateModified: '2026-06-08',
-    author: { '@type': 'Organization', name: 'CSRD Tools' },
+    dateModified: LAST_REVIEWED_ISO,
+    author: EDITOR_ORG,
+    reviewedBy: EDITOR_ORG,
     publisher: { '@type': 'Organization', name: 'CSRD Tools' },
     isBasedOn: SRC.council
   };
@@ -422,6 +425,9 @@ export default function OmnibusPage() {
             straight and track what is settled versus still moving.{' '}
             <SourceCite href={SRC.council}>Council of the EU</SourceCite>
           </p>
+          <div className="mt-6">
+            <Byline />
+          </div>
         </header>
       </Container>
 

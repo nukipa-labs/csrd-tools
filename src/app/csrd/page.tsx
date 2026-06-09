@@ -15,12 +15,14 @@ import {
   Stat,
   Stats,
   Prose,
-  Icon
+  Icon,
+  Byline
 } from '@/components/ui';
+import { EDITOR_ORG, LAST_REVIEWED_ISO, FIRST_PUBLISHED_ISO } from '@/lib/seo';
 
 const SITE = 'https://csrd-tools.com';
-const PUBLISHED = '2025-09-01';
-const MODIFIED = '2026-06-08';
+const PUBLISHED = FIRST_PUBLISHED_ISO;
+const MODIFIED = LAST_REVIEWED_ISO;
 
 // Canonical official + authoritative sources (research/01-regulation.md section 10).
 const SRC = {
@@ -96,7 +98,7 @@ export const metadata: Metadata = {
     url: `${SITE}/csrd`,
     publishedTime: PUBLISHED,
     modifiedTime: MODIFIED,
-    images: [{ url: '/brand/og.svg', width: 1200, height: 630, alt: 'CSRD Tools' }]
+    images: [{ url: '/brand/og.png', width: 1200, height: 630, alt: 'CSRD Tools' }]
   }
 };
 
@@ -111,7 +113,8 @@ export default function CsrdPillarPage() {
     datePublished: PUBLISHED,
     dateModified: MODIFIED,
     mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE}/csrd` },
-    author: { '@type': 'Organization', name: 'CSRD Tools', url: SITE },
+    author: EDITOR_ORG,
+    reviewedBy: EDITOR_ORG,
     publisher: { '@type': 'Organization', name: 'CSRD Tools', url: SITE },
     about: {
       '@type': 'Legislation',
@@ -198,6 +201,10 @@ export default function CsrdPillarPage() {
             <Button href="/omnibus" variant="secondary">
               What the Omnibus changed
             </Button>
+          </div>
+
+          <div className="mt-8">
+            <Byline />
           </div>
         </Container>
       </header>

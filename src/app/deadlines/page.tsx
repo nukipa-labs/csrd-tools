@@ -10,8 +10,10 @@ import {
   Sources,
   JsonLd,
   NewsletterSignup,
-  Icon
+  Icon,
+  Byline
 } from '@/components/ui';
+import { EDITOR_ORG, LAST_REVIEWED_ISO } from '@/lib/seo';
 
 const SITE = 'https://csrd-tools.com';
 const PAGE_URL = `${SITE}/deadlines`;
@@ -289,8 +291,9 @@ export default function DeadlinesPage() {
       'The confirmed CSRD reporting timeline after the stop-the-clock delay and the final Omnibus, plus a live status board on what is still moving.',
     url: PAGE_URL,
     datePublished: '2026-03-18',
-    dateModified: '2026-06-08',
-    author: { '@type': 'Organization', name: 'CSRD Tools' },
+    dateModified: LAST_REVIEWED_ISO,
+    author: EDITOR_ORG,
+    reviewedBy: EDITOR_ORG,
     publisher: { '@type': 'Organization', name: 'CSRD Tools' },
     isBasedOn: SRC.csrdEurlex
   };
@@ -358,6 +361,9 @@ export default function DeadlinesPage() {
             Newly in-scope companies report for FY2027, with first reports in 2028. Below are the
             confirmed dates, the full history, and a live status board on the parts still moving.
           </p>
+          <div className="mt-6">
+            <Byline />
+          </div>
         </header>
       </Container>
 

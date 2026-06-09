@@ -3,8 +3,10 @@ import Link from 'next/link';
 import { Container } from '@/components/ui';
 import { JsonLd } from '@/components/ui';
 import { NewsletterSignup } from '@/components/ui';
+import { Byline } from '@/components/ui';
 import { GLOSSARY } from '@/lib/glossary';
 import { GlossaryList } from './GlossaryList';
+import { LAST_REVIEWED_ISO } from '@/lib/seo';
 
 const SITE = 'https://csrd-tools.com';
 
@@ -19,7 +21,7 @@ export const metadata: Metadata = {
     description:
       'Every CSRD and ESG term decoded in plain English: ESRS, double materiality, DMA, Scope 1/2/3, EU Taxonomy, VSME and more.',
     url: `${SITE}/glossary`,
-    images: [{ url: '/brand/og.svg', width: 1200, height: 630, alt: 'CSRD Tools' }]
+    images: [{ url: '/brand/og.png', width: 1200, height: 630, alt: 'CSRD Tools' }]
   }
 };
 
@@ -28,6 +30,7 @@ export default function GlossaryPage() {
     '@context': 'https://schema.org',
     '@type': 'DefinedTermSet',
     name: 'CSRD Glossary',
+    dateModified: LAST_REVIEWED_ISO,
     description:
       'Plain-English definitions of the key terms in the EU Corporate Sustainability Reporting Directive (Directive (EU) 2022/2464) and the wider ESG reporting landscape.',
     url: `${SITE}/glossary`,
@@ -84,6 +87,9 @@ export default function GlossaryPage() {
             </Link>
             .
           </p>
+          <div className="mt-6 flex justify-center">
+            <Byline />
+          </div>
         </header>
 
         <div className="mt-12">

@@ -15,12 +15,14 @@ import {
   Stat,
   Stats,
   Prose,
-  Icon
+  Icon,
+  Byline
 } from '@/components/ui';
+import { EDITOR_ORG, LAST_REVIEWED_ISO, FIRST_PUBLISHED_ISO } from '@/lib/seo';
 
 const SITE = 'https://csrd-tools.com';
-const PUBLISHED = '2025-09-01';
-const MODIFIED = '2026-06-08';
+const PUBLISHED = FIRST_PUBLISHED_ISO;
+const MODIFIED = LAST_REVIEWED_ISO;
 
 const SRC = {
   efragIg1: 'https://knowledgehub.efrag.org/eng/interactive/ig/ig1/09-2025',
@@ -83,7 +85,7 @@ export const metadata: Metadata = {
     url: `${SITE}/double-materiality`,
     publishedTime: PUBLISHED,
     modifiedTime: MODIFIED,
-    images: [{ url: '/brand/og.svg', width: 1200, height: 630, alt: 'CSRD Tools' }]
+    images: [{ url: '/brand/og.png', width: 1200, height: 630, alt: 'CSRD Tools' }]
   }
 };
 
@@ -98,7 +100,8 @@ export default function DoubleMaterialityPage() {
     datePublished: PUBLISHED,
     dateModified: MODIFIED,
     mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE}/double-materiality` },
-    author: { '@type': 'Organization', name: 'CSRD Tools', url: SITE },
+    author: EDITOR_ORG,
+    reviewedBy: EDITOR_ORG,
     publisher: { '@type': 'Organization', name: 'CSRD Tools', url: SITE }
   };
 
@@ -182,6 +185,10 @@ export default function DoubleMaterialityPage() {
             <Button href="/scope-checker" variant="secondary">
               Am I in scope?
             </Button>
+          </div>
+
+          <div className="mt-8">
+            <Byline />
           </div>
         </Container>
       </header>

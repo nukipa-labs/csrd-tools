@@ -10,9 +10,11 @@ import {
   ContourBackground,
   RevealOnScroll,
   Prose,
-  Icon
+  Icon,
+  Byline
 } from '@/components/ui';
 import { ScopeChecker } from './ScopeChecker';
+import { EDITOR_ORG, LAST_REVIEWED_ISO, FIRST_PUBLISHED_ISO } from '@/lib/seo';
 
 const CANONICAL = 'https://csrd-tools.com/scope-checker';
 
@@ -71,6 +73,9 @@ export default function ScopeCheckerPage() {
             url: CANONICAL,
             applicationCategory: 'BusinessApplication',
             operatingSystem: 'Any (web)',
+            author: EDITOR_ORG,
+            datePublished: FIRST_PUBLISHED_ISO,
+            dateModified: LAST_REVIEWED_ISO,
             offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
             description:
               'A free interactive tool that helps a business work out whether the EU Corporate Sustainability Reporting Directive (CSRD) applies to it after the Omnibus, and when it would first report.'
@@ -155,6 +160,9 @@ export default function ScopeCheckerPage() {
             plain-English questions and get a tailored steer: whether it applies, on what basis,
             when you would first report, and what to do next.
           </p>
+          <div className="mt-6">
+            <Byline />
+          </div>
         </Container>
       </section>
 

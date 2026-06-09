@@ -4,27 +4,42 @@ import { Container } from '@/components/ui/Container';
 import { Prose } from '@/components/ui/Prose';
 import { Callout } from '@/components/ui/Callout';
 import { JsonLd } from '@/components/ui/JsonLd';
+import { Byline } from '@/components/ui/Byline';
+import {
+  SITE_URL,
+  ORGANIZATION_LD,
+  EDITOR_ORG,
+  LAST_REVIEWED_ISO,
+  FIRST_PUBLISHED_ISO
+} from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'About and methodology: how we keep this accurate',
   description:
-    'CSRD Tools is a free hub explaining the EU Corporate Sustainability Reporting Directive in plain English. How we source, update and keep it accurate.',
+    'CSRD Tools is a free hub explaining the EU Corporate Sustainability Reporting Directive in plain English. Who writes it, how we source it, and how we keep it accurate.',
   alternates: { canonical: '/about' }
+};
+
+const aboutLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'About CSRD Tools',
+  url: `${SITE_URL}/about`,
+  description:
+    'A plain-English guide to the CSRD, built to stay accurate. Who writes it, how we source and update it.',
+  isPartOf: { '@id': `${SITE_URL}/#website` },
+  publisher: { '@id': `${SITE_URL}/#organization` },
+  author: EDITOR_ORG,
+  reviewedBy: EDITOR_ORG,
+  datePublished: FIRST_PUBLISHED_ISO,
+  dateModified: LAST_REVIEWED_ISO,
+  inLanguage: 'en'
 };
 
 export default function AboutPage() {
   return (
     <>
-      <JsonLd
-        data={{
-          '@context': 'https://schema.org',
-          '@type': 'AboutPage',
-          name: 'About CSRD Tools',
-          url: 'https://csrd-tools.com/about',
-          description:
-            'A plain-English guide to the CSRD, built to stay accurate. How we source and update it.'
-        }}
-      />
+      <JsonLd data={[aboutLd, ORGANIZATION_LD]} />
       <Container size="md" className="py-16 lg:py-24">
         <header className="max-w-3xl">
           <h1 className="font-display font-semibold text-4xl lg:text-5xl text-ink leading-tight">
@@ -38,6 +53,9 @@ export default function AboutPage() {
           <p className="mt-3 font-display text-lg text-primary">
             Find your way through EU sustainability reporting.
           </p>
+          <div className="mt-6">
+            <Byline />
+          </div>
         </header>
 
         <div className="mt-12">
@@ -95,11 +113,42 @@ export default function AboutPage() {
 
         <div className="mt-12 max-w-2xl">
           <Prose>
-            <h2>Who&apos;s behind it</h2>
+            <h2>Who writes and reviews this</h2>
             <p>
-              {/* TODO: real maintainer name */}
-              CSRD Tools is a free information service operated by Nukipa Labs GmbH. It is
-              maintained as an editorial project, not by a regulator and not by a vendor.
+              CSRD Tools is written and maintained by the <strong>CSRD Tools editorial team</strong>,
+              a free information service operated by Nukipa Labs GmbH (Munich). It is an editorial
+              project, not a regulator and not a vendor. Our qualification is method rather than a
+              badge: every page is written from, and checked against, the primary legal texts and the
+              standard-setters, and we link those sources on the page so you can verify each claim
+              yourself.
+            </p>
+            <p>
+              Our editorial standards are simple and strict:
+            </p>
+            <ul>
+              <li>
+                <strong>Primary sources only.</strong> Facts trace to EUR-Lex (the directives), the
+                European Commission, EFRAG (which drafts the ESRS) and the Council of the EU, not to
+                second-hand summaries.
+              </li>
+              <li>
+                <strong>Dated reviews, not auto-stamps.</strong> The &ldquo;Last reviewed&rdquo; date
+                on a page changes only when a person has actually re-checked it against those sources,
+                so it means what it says.
+              </li>
+              <li>
+                <strong>We flag uncertainty.</strong> Where the law is still moving (the revised ESRS,
+                the VSME act, national transposition) we mark it as unsettled instead of sounding more
+                certain than the facts allow.
+              </li>
+              <li>
+                <strong>Corrections welcome.</strong> If you spot something wrong or out of date, tell
+                us and we will fix it and note the change. See the contact below.
+              </li>
+            </ul>
+            <p>
+              Full company and contact details, including our registered entity, are on the{' '}
+              <Link href="/legal/imprint">imprint</Link>.
             </p>
 
             <h2>Get in touch</h2>

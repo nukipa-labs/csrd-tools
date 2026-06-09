@@ -15,12 +15,14 @@ import {
   Stat,
   Stats,
   Prose,
-  Icon
+  Icon,
+  Byline
 } from '@/components/ui';
+import { EDITOR_ORG, LAST_REVIEWED_ISO, FIRST_PUBLISHED_ISO } from '@/lib/seo';
 
 const SITE = 'https://csrd-tools.com';
-const PUBLISHED = '2025-09-01';
-const MODIFIED = '2026-06-08';
+const PUBLISHED = FIRST_PUBLISHED_ISO;
+const MODIFIED = LAST_REVIEWED_ISO;
 
 const SRC = {
   taxonomyReg: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32020R0852',
@@ -86,7 +88,7 @@ export const metadata: Metadata = {
     url: `${SITE}/eu-taxonomy`,
     publishedTime: PUBLISHED,
     modifiedTime: MODIFIED,
-    images: [{ url: '/brand/og.svg', width: 1200, height: 630, alt: 'CSRD Tools' }]
+    images: [{ url: '/brand/og.png', width: 1200, height: 630, alt: 'CSRD Tools' }]
   }
 };
 
@@ -101,7 +103,8 @@ export default function EuTaxonomyPage() {
     datePublished: PUBLISHED,
     dateModified: MODIFIED,
     mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE}/eu-taxonomy` },
-    author: { '@type': 'Organization', name: 'CSRD Tools', url: SITE },
+    author: EDITOR_ORG,
+    reviewedBy: EDITOR_ORG,
     publisher: { '@type': 'Organization', name: 'CSRD Tools', url: SITE },
     about: {
       '@type': 'Legislation',
@@ -186,6 +189,10 @@ export default function EuTaxonomyPage() {
             <Button href="/sustainability-reporting" variant="secondary">
               The bigger picture
             </Button>
+          </div>
+
+          <div className="mt-8">
+            <Byline />
           </div>
         </Container>
       </header>

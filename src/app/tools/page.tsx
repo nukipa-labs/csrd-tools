@@ -6,8 +6,10 @@ import {
   Section,
   RevealOnScroll,
   JsonLd,
-  NewsletterSignup
+  NewsletterSignup,
+  Byline
 } from '@/components/ui';
+import { LAST_REVIEWED_ISO } from '@/lib/seo';
 
 const SITE = 'https://csrd-tools.com';
 const PAGE_URL = `${SITE}/tools`;
@@ -217,6 +219,7 @@ export default function ToolsPage() {
     '@type': 'ItemList',
     name: 'Free CSRD tools and templates',
     url: PAGE_URL,
+    dateModified: LAST_REVIEWED_ISO,
     itemListElement: TOOLS.map((t, i) => ({
       '@type': 'ListItem',
       position: i + 1,
@@ -259,6 +262,9 @@ export default function ToolsPage() {
             need right now, whether that is checking your scope, building a materiality matrix or
             working out your emissions.
           </p>
+          <div className="mt-6">
+            <Byline />
+          </div>
         </header>
       </Container>
 

@@ -10,9 +10,11 @@ import {
   ContourBackground,
   RevealOnScroll,
   Prose,
-  Icon
+  Icon,
+  Byline
 } from '@/components/ui';
 import { EmissionsCalculator } from './EmissionsCalculator';
+import { EDITOR_ORG, LAST_REVIEWED_ISO, FIRST_PUBLISHED_ISO } from '@/lib/seo';
 
 const CANONICAL = 'https://csrd-tools.com/emissions-calculator';
 
@@ -66,6 +68,9 @@ export default function EmissionsCalculatorPage() {
             url: CANONICAL,
             applicationCategory: 'BusinessApplication',
             operatingSystem: 'Any (web)',
+            author: EDITOR_ORG,
+            datePublished: FIRST_PUBLISHED_ISO,
+            dateModified: LAST_REVIEWED_ISO,
             offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
             description:
               'A free interactive tool that estimates an indicative Scope 1, 2 and 3 carbon footprint in tonnes of CO2 equivalent using rough default emission factors.'
@@ -150,6 +155,9 @@ export default function EmissionsCalculatorPage() {
             activity lines and we'll convert them to an indicative tCO2e total, a screening first step
             toward the greenhouse-gas inventory behind ESRS E1.
           </p>
+          <div className="mt-6">
+            <Byline />
+          </div>
         </Container>
       </section>
 

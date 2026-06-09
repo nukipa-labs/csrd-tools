@@ -4,6 +4,7 @@ import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { CookieBanner } from '@/components/CookieBanner';
 import { displayFont, bodyFont, monoFont } from '@/lib/fonts';
+import { SITE_LIVE } from '@/lib/seo';
 import './globals.css';
 
 // PLATFORM CONTRACT: <NukipaFeedback /> must remain inside <body> for the
@@ -11,6 +12,12 @@ import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://csrd-tools.com'),
+  // Until the public domain resolves, keep the whole site out of the index so
+  // the csrd.nukipa.com preview is not crawled with canonicals pointing at a
+  // domain that does not resolve. Flip SITE_LIVE in lib/seo.ts to go live.
+  robots: SITE_LIVE
+    ? undefined
+    : { index: false, follow: false, googleBot: { index: false, follow: false } },
   title: {
     default: 'CSRD Tools: the plain-English CSRD & ESRS hub',
     template: '%s · CSRD Tools'
@@ -25,14 +32,14 @@ export const metadata: Metadata = {
     description:
       'Find your way through EU sustainability reporting. Plain-English answers, free tools and trustworthy updates on CSRD, ESRS and the Omnibus.',
     url: 'https://csrd-tools.com',
-    images: [{ url: '/brand/og.svg', width: 1200, height: 630, alt: 'CSRD Tools' }]
+    images: [{ url: '/brand/og.png', width: 1200, height: 630, alt: 'CSRD Tools' }]
   },
   twitter: {
     card: 'summary_large_image',
     title: 'CSRD Tools: the plain-English CSRD & ESRS hub',
     description:
       'Find your way through EU sustainability reporting. Plain-English answers, free tools and trustworthy updates on CSRD, ESRS and the Omnibus.',
-    images: ['/brand/og.svg']
+    images: ['/brand/og.png']
   },
   alternates: { canonical: '/' }
 };

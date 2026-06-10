@@ -5,11 +5,10 @@
 
 export const SITE_URL = 'https://csrd-tools.com';
 
-// FLIP TO true once csrd-tools.com resolves to the live site.
-// While false: every page is noindex and robots.txt disallows all, so the
-// csrd.nukipa.com preview is not indexed with canonicals pointing at a domain
-// that does not resolve yet.
-export const SITE_LIVE = false;
+// true once the site is live and should be indexed. When true: no robots
+// noindex meta (layout) and robots.txt allows crawling + exposes the sitemap.
+// When false: every page is noindex and robots.txt disallows all.
+export const SITE_LIVE = true;
 
 // Genuine last-review date. Bump this only when the content has actually been
 // re-checked against primary sources (EUR-Lex / EFRAG / European Commission /

@@ -14,7 +14,7 @@ export function Stats() {
         <StatsGrid>
           <Stat
             value="~80%"
-            label="Of previously-covered companies now removed from CSRD scope by the Omnibus, from roughly 50,000 down to around 5,000."
+            label="Of previously-covered companies removed from CSRD scope by the Omnibus, from roughly 50,000 down to around 5,000 (European Commission estimate)."
           />
           <Stat
             value="1,000 / 450m"

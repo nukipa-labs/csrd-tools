@@ -14,6 +14,7 @@ import {
   Byline
 } from '@/components/ui';
 import { EDITOR_ORG, LAST_REVIEWED_ISO } from '@/lib/seo';
+import { LeadMagnet } from '@/components/sections/LeadMagnet';
 
 const SITE = 'https://csrd-tools.com';
 const PAGE_URL = `${SITE}/deadlines`;
@@ -658,6 +659,20 @@ export default function DeadlinesPage() {
           ]}
         />
       </Section>
+
+      <LeadMagnet
+        slug="cheat-sheet"
+        file="/downloads/csrd-scope-deadlines-cheat-sheet.pdf"
+        fileName="csrd-scope-deadlines-cheat-sheet.pdf"
+        title="Keep the dates handy: the CSRD Scope & Deadlines Cheat-Sheet"
+        description="A one-page PDF with the post-Omnibus scope test and every key date, sourced and free. Email it to yourself to keep on file."
+        bullets={[
+          'The scope test: 1,000 employees AND EUR 450m, both',
+          'Transposition 19 Mar 2027, FY2027 to 2028, non-EU FY2028 to 2029',
+          'What an in-scope company reports, on one page'
+        ]}
+        source="deadlines"
+      />
 
       <NewsletterSignup
         variant="band"

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Section, Icon, RevealOnScroll } from '@/components/ui';
+import { Section, Icon, RevealOnScroll, Byline } from '@/components/ui';
 
 export type FaqItem = { q: string; a: React.ReactNode };
 
@@ -64,6 +64,9 @@ export function HomeFAQ({ items }: { items: FaqItem[] }) {
         </Link>
         .
       </p>
+      <div className="mt-6">
+        <Byline />
+      </div>
     </Section>
   );
 }

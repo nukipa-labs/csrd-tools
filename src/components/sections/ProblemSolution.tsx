@@ -13,7 +13,8 @@ export function ProblemSolution() {
             </h2>
             <p className="mt-5 text-ink/80 text-base lg:text-lg leading-relaxed">
               The rules changed under your feet. The Omnibus package cut roughly 80% of companies out
-              of scope, pushed the deadlines back, and is slashing the ESRS datapoints. Maybe you
+              of scope (the European Commission&apos;s estimate), pushed the deadlines back, and is
+              slashing the ESRS datapoints. Maybe you
               started preparing and now don&apos;t know if you still have to. Maybe a big customer is
               asking you for sustainability data and you&apos;re not even sure you owe it.
             </p>

@@ -11,7 +11,7 @@ export async function POST(req: Request) {
   }
 
   const { slug, ...fields } = payload as { slug?: string } & Record<string, unknown>;
-  const allowed = ['newsletter', 'scope-checker', 'emissions-calculator', 'materiality-matrix', 'supplier-pack', 'contact', 'dma-workbook', 'esrs-checklist'];
+  const allowed = ['newsletter', 'scope-checker', 'emissions-calculator', 'materiality-matrix', 'supplier-pack', 'contact', 'dma-workbook', 'esrs-checklist', 'cheat-sheet'];
 
   if (!slug || !allowed.includes(slug)) {
     return Response.json({ ok: false, error: 'unknown form' }, { status: 400 });

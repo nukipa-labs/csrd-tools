@@ -9,6 +9,7 @@ import { WhyUs } from '@/components/sections/WhyUs';
 import { NewsletterFeature } from '@/components/sections/NewsletterFeature';
 import { Stats } from '@/components/sections/Stats';
 import { CTABanner } from '@/components/sections/CTABanner';
+import { LeadMagnet } from '@/components/sections/LeadMagnet';
 import { HomeFAQ, type FaqItem } from '@/components/sections/HomeFAQ';
 import {
   SITE_URL,
@@ -60,13 +61,13 @@ const FAQ: { q: string; answer: string; node: React.ReactNode }[] = [
   {
     q: 'What changed with the CSRD Omnibus?',
     answer:
-      'The Omnibus directive (Directive (EU) 2026/470, in force 18 March 2026) cut the number of companies in scope by about 80%, raised the thresholds to 1,000 employees and EUR 450 million turnover, removed listed SMEs, postponed reporting so newly in-scope companies first report for financial year 2027 (published in 2028), and is simplifying the ESRS.',
+      'The Omnibus directive (Directive (EU) 2026/470, in force 18 March 2026) cut the number of companies in scope by about 80% on the European Commission\'s estimate, raised the thresholds to 1,000 employees and EUR 450 million turnover, removed listed SMEs, postponed reporting so newly in-scope companies first report for financial year 2027 (published in 2028), and is simplifying the ESRS.',
     node: (
       <p>
         The Omnibus directive (Directive (EU) 2026/470, in force 18 March 2026) cut the number of
-        companies in scope by about 80%, raised the thresholds, removed listed SMEs, postponed
-        reporting (newly in-scope companies first report for FY2027, published 2028), and is
-        simplifying the ESRS.{' '}
+        companies in scope by about 80% (the European Commission&apos;s estimate), raised the
+        thresholds, removed listed SMEs, postponed reporting (newly in-scope companies first report
+        for FY2027, published 2028), and is simplifying the ESRS.{' '}
         <Link href="/omnibus" className="text-primary underline decoration-dotted underline-offset-2 hover:text-accent-deep">
           What the Omnibus changed
         </Link>
@@ -126,6 +127,20 @@ export default function HomePage() {
       <WhyUs />
       <NewsletterFeature />
       <Stats />
+      <LeadMagnet
+        slug="cheat-sheet"
+        file="/downloads/csrd-scope-deadlines-cheat-sheet.pdf"
+        fileName="csrd-scope-deadlines-cheat-sheet.pdf"
+        title="The Post-Omnibus CSRD Scope & Deadlines Cheat-Sheet"
+        description="One PDF to know whether the CSRD still applies to you after the Omnibus, plus every date that matters. Post-Omnibus accurate, sourced and free."
+        bullets={[
+          'The scope test in plain English: 1,000 employees AND EUR 450m, both',
+          'Every key date: transposition, FY2027 to 2028, non-EU FY2028 to 2029',
+          'What an in-scope company actually reports (ESRS, DMA, assurance, XBRL)',
+          'Sourced to EUR-Lex, the European Commission and EFRAG'
+        ]}
+        source="home"
+      />
       <HomeFAQ items={faqItems} />
       <CTABanner />
     </>

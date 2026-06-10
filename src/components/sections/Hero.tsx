@@ -21,9 +21,10 @@ export function Hero() {
           </RevealOnScroll>
           <RevealOnScroll delay={2}>
             <p className="mt-5 text-lg lg:text-xl text-ink/80 leading-relaxed max-w-2xl">
-              The Omnibus reset the CSRD. Roughly 80% of companies are now out of scope, the
-              deadlines moved, and the ESRS are being cut. Plain-English answers, free tools and
-              updates you can trust, so you know exactly where you stand.
+              The Omnibus reset the CSRD. On the European Commission&apos;s own estimate, roughly 80%
+              of companies are now out of scope, the deadlines moved, and the ESRS are being cut.
+              Plain-English answers, free tools and updates you can trust, so you know exactly where
+              you stand.
             </p>
           </RevealOnScroll>
           <RevealOnScroll delay={3}>

@@ -1,0 +1,43 @@
+# CSRD Tools
+
+> Independent, free, plain-English hub and free tools for the EU Corporate Sustainability Reporting Directive (CSRD), the European Sustainability Reporting Standards (ESRS) and the 2026 Omnibus simplification. Operated by Nukipa Labs GmbH (Munich). No software to sell, no consulting upsell - every page is written from and linked to primary EU sources (EUR-Lex, the European Commission, EFRAG and the Council of the EU). Last reviewed 8 June 2026.
+
+## Key post-Omnibus facts (mid-2026)
+
+- The final Omnibus I Directive (EU) 2026/470 was published in the Official Journal on 26 February 2026 and entered into force on 18 March 2026. Member State transposition is due 19 March 2027.
+- CSRD itself is Directive (EU) 2022/2464; it replaced the NFRD and is built on the ESRS and on double materiality.
+- New EU scope (confirmed): a company is in mandatory scope only if it exceeds BOTH more than 1,000 employees AND more than EUR 450 million net turnover. The old two-of-three test is superseded.
+- The European Commission estimates the Omnibus removes about 80% of previously covered companies (from roughly 50,000 to roughly 5,000). Listed SMEs are out of mandatory scope and may use the voluntary VSME standard.
+- Non-EU parent groups are caught above EUR 450 million of EU net turnover plus a qualifying EU subsidiary or branch; they first report for FY2028 (published 2029).
+- Newly in-scope EU companies first report for financial year 2027 (published in 2028).
+- A value-chain cap means in-scope companies may not require sustainability data beyond the VSME standard from value-chain partners with fewer than 1,000 employees.
+- The ESRS are 12 standards: ESRS 1 and 2 (cross-cutting) plus E1 to E5 (environment), S1 to S4 (social) and G1 (governance). A revision is cutting mandatory datapoints by roughly 60 to 70%, applying from FY2027 (voluntary early adoption for FY2026). Sector-specific ESRS have been dropped.
+- Assurance is limited assurance; the planned move to reasonable assurance was removed by the Omnibus.
+
+## Core pages
+
+- [What is the CSRD?](https://csrd-tools.com/csrd): the canonical plain-English explainer, post-Omnibus.
+- [The CSRD Omnibus](https://csrd-tools.com/omnibus): what the Omnibus changed and what is still pending.
+- [Deadlines and timeline](https://csrd-tools.com/deadlines): the reporting timeline, waves and key dates.
+- [The ESRS standards](https://csrd-tools.com/esrs): the 12-standard map, linking to each standard.
+- [ESRS E1: Climate change](https://csrd-tools.com/esrs/e1-climate-change): the lead topical standard.
+- [Double materiality](https://csrd-tools.com/double-materiality): impact vs financial materiality and the DMA.
+- [Scope 1, 2 and 3 emissions](https://csrd-tools.com/scope-1-2-3-emissions): the scopes and the 15 Scope 3 categories.
+- [The GHG Protocol](https://csrd-tools.com/ghg-protocol): the standard behind ESRS E1 emissions accounting.
+- [EU Taxonomy](https://csrd-tools.com/eu-taxonomy): eligibility vs alignment, DNSH, the KPIs.
+- [Sustainability reporting](https://csrd-tools.com/sustainability-reporting): the wider landscape and where CSRD fits.
+- [ESG reporting frameworks compared](https://csrd-tools.com/esg-reporting-frameworks): CSRD vs GRI vs ISSB vs VSME vs TCFD.
+- [Glossary](https://csrd-tools.com/glossary): plain-English definitions (DMA, IRO, DNSH, VSME, N-ESRS, PIE and more).
+
+## Free tools
+
+- [CSRD scope checker](https://csrd-tools.com/scope-checker): are you still in scope after the Omnibus?
+- [Scope 1-2-3 emissions calculator](https://csrd-tools.com/emissions-calculator): a screening estimate of your footprint.
+- [Materiality matrix builder](https://csrd-tools.com/materiality-matrix-builder): score and plot your material topics.
+- [For suppliers (VSME)](https://csrd-tools.com/suppliers): asked for sustainability data? Whether you must respond, plus response templates.
+
+## More
+
+- [About and methodology](https://csrd-tools.com/about): who writes this and how it is kept accurate.
+- [The CSRD Brief](https://csrd-tools.com/subscribe): a free plain-English newsletter on CSRD, ESRS and Omnibus changes.
+- Contact: contact@nukipalabs.com
